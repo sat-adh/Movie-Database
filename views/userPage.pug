@@ -1,0 +1,37 @@
+html
+  head
+    title #{user.username} 
+    include partials/header
+    style.
+      body { background-color: #23272A; color: #ffffff; }
+      a { color: lightblue; }
+      a:hover { color: purple; }
+      input { background-color: #23272A; padding: 10px; border-color: silver; width: 300px; }
+      input:focus { background-color: #000000; color: white; outline: none; border-color: silver; }
+      button { top: 60%; left: 40%; border-color: silver; background-color: #23272A; color: white; margin: 5px; padding: 10px; }
+      button:hover { border-color: purple; color: white; }
+      h1 { text-align: center; }
+
+  body
+      header
+          h1 Movie Database API 
+      hr
+      h2 #{user.username} 
+      form(method="GET" action=`/MDAPI/followUser/${user.username}`)
+        button(type="submit") Follow 
+        br
+
+      h4 Account type: #{user.accountType}
+      h5 Users followed by #{user.username}: 
+      each u in user.followingUsers
+        a(href=`/MDAPI/searchUser/${u}`) #{u}
+        br
+      h5 People followed by #{user.username}: 
+      each p in user.followingPeople
+        a(href=`/MDAPI/searchPerson/${p}`) #{p} 
+        br
+      h5 #{user.username}'s Watched List: 
+      each m in user.watchedList 
+        a(href=`/MDAPI/movies/${m}`) #{m}
+        br
+      br

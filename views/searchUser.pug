@@ -1,0 +1,24 @@
+html
+  head
+    title Search Users
+    include partials/header
+    style.
+      body { background-color: #23272A; color: #ffffff; }
+      a { color: lightblue; }
+      a:hover { color: purple; }
+      input { background-color: #23272A; padding: 10px; border-color: silver; width: 250px; }
+      input:focus { background-color: #000000; color: white; outline: none; border-color: silver; }
+      button { top: 60%; left: 40%; border-color: silver; background-color: #23272A; color: white; margin: 5px; padding: 10px; }
+      button:hover { border-color: purple; color: white; }
+      h1 { text-align: center; }
+
+  body
+      header
+          h1 Movie Database API 
+      hr
+      form(method="POST" action="/MDAPI/searchUser")
+        input(type="search" name="searchuser" placeholder="Search username" required)
+        br
+        button(type="submit") Search
+      br
+

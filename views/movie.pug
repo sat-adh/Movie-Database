@@ -1,0 +1,60 @@
+html
+  head
+    title  #{movie.Title}
+    include partials/header
+    style.
+      body { background-color: #23272A; color: #ffffff; }
+      a { color: lightblue; }
+      a:hover { color: purple; }
+      input { background-color: #23272A; padding: 10px; border-color: silver; width: 220px; }
+      input:focus { background-color: #000000; color: white; outline: none; border-color: silver; }
+      button { top: 60%; left: 40%; border-color: silver; background-color: #23272A; color: white; margin: 5px; padding: 10px; }
+      button:hover { border-color: purple; color: white; }
+      h1 { text-align: center; }
+
+  body
+      header
+        h1 Movie Database API 
+        hr
+        h2 #{movie.Title}
+        form(method="GET" action=`/MDAPI/addToWatchedList/${movie.Title}`)
+          button(type="submit") Add to Watched List 
+        br
+        if movie.accountType == "contributing"
+          form(method="GET" action=`/MDAPI/addReview/${movie.Title}`)
+            button(type="submit") Add Review
+        hr
+        img(src=movie.Poster  alt="Movie-Poster" style="width:300;height:450px")
+        br
+        p
+          | #{movie.Plot}
+        p Release: #{movie.Released}
+        p Duration: #{movie.Runtime}
+        p Genre:
+        each g in movie.Genre
+          a(href=`/MDAPI/movies?genre=${g}`) #{g}
+          br
+        p Actors:
+        each ac in movie.Actors
+          a(href=`/MDAPI/searchPerson/${ac}`) #{ac} 
+          br
+        p Directors: 
+        each di in movie.Director
+          a(href=`/MDAPI/searchPerson/${di}`) #{di}
+          br
+        p Writers: 
+        each wr in movie.Writer
+          a(href=`/MDAPI/searchPerson/${wr}`) #{wr}
+          br
+        h3 Reviews: 
+          hr
+          each r in movie.Reviews 
+            h4 &nbsp;&nbsp;&nbsp; #{r}
+            br
+        br
+       
+        h3 Similar Movies 
+        hr
+        each m in movie.similarMovies
+          a(href=`/MDAPI/movies/${m.Title}`)
+            img(src=m.Poster)

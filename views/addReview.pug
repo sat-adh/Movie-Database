@@ -1,0 +1,26 @@
+html
+  head
+    title Add Review 
+    include partials/header
+    style.
+      body { background-color: #23272A; color: #ffffff; }
+      a { color: lightblue; }
+      a:hover { color: purple; }
+      input { background-color: #23272A; padding: 10px; border-color: silver; width: 300px; }
+      input:focus { background-color: #000000; color: white; outline: none; border-color: silver; }
+      button { top: 60%; left: 40%; border-color: silver; background-color: #23272A; color: white; margin: 5px; padding: 10px; }
+      button:hover { border-color: purple; color: white; }
+      h1 { text-align: center; }
+
+  body
+      header
+          h1 Movie Database API
+      hr 
+      form(action=`/MDAPI/addReview/${movie.title}` method="POST")
+          p Add Review for #{movie.title}
+          hr
+          input(type="text" name="reviewer" placeholder="Please enter your username first" required)
+          input(type="number" name="reviewscore" min="1" max="10" placeholder="Please rate from 1 to 10" required)
+          input(type="text" name="reviewtext" placeholder="Please enter your review" required)
+          br
+          button(type="submit") Submit

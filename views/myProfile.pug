@@ -1,0 +1,62 @@
+html
+  head
+    title My Profile
+    include partials/header
+    style.
+      body { background-color: #23272A; color: #ffffff; }
+      a { color: lightblue; }
+      a:hover { color: purple; }
+      input { background-color: #23272A; padding: 10px; border-color: silver; width: 220px; }
+      input:focus { background-color: #000000; color: white; outline: none; border-color: silver; }
+      button { background-color: #23272A; color: white; }
+      button:hover { border-color: purple; color: white; }
+      h1 { text-align: center; }
+
+  body
+      header
+        h1 Movie Database API 
+        hr
+        h3 Username: #{foundUser.username} 
+        br
+        h4 User Type: #{foundUser.accountType}
+         br
+        form(method="GET" action="/MDAPI/changeType")
+          if foundUser.accountType == "regular"
+            button Switch To Contributing
+          if foundUser.accountType == "contributing"
+            button Switch To Regular 
+        br
+        h4 Following Users: 
+        each u in foundUser.followingUsers 
+          a(href=`/MDAPI/searchUser/${u}`) #{u}
+          form(method="GET" action=`/MDAPI/removeFromFollowingUsers/${u}`)
+             button Remove 
+          br
+        br
+        h4 Following People: 
+        for p in foundUser.followingPeople 
+          a(href=`/MDAPI/searchPerson/${p}`) #{p}
+          form(method="GET" action=`/MDAPI/removeFromFollowingPeople/${p}`)
+             button Remove 
+          br
+        br
+        h4 Watched List:
+        each m in foundUser.watchedList 
+           a(href=`/MDAPI/movies/${m}`) #{m}
+           form(method="GET" action=`/MDAPI/removeFromWatchedList/${m}`)
+             button Remove 
+           br
+        br
+        h4 Recommended Movies:
+        form(method="GET" action="/MDAPI/recommended")
+          button View Our Selected Picks For You!
+        br
+        if foundUser.accountType == "contributing"
+          form(method="GET" action="/MDAPI/addMovie")
+            button Add Movie 
+            br
+        br
+        br
+           
+       
+

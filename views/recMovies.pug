@@ -1,0 +1,18 @@
+html 
+    head 
+        title Recommended For You  
+        include partials/header
+        style.
+          body { background-color: #23272A; color: #ffffff; }
+          a { color: lightblue; }
+          a:hover { color: purple; }
+          h1 { text-align: center; }
+
+    body 
+        header 
+            h1 Movie Database API 
+        hr
+        h2 Recommended Movies For You 
+        each n in mvsShort 
+            a(href=`/MDAPI/movies/${n.Title}`)
+                img(src = n.Poster)

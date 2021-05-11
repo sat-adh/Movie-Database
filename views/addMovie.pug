@@ -1,0 +1,40 @@
+html
+  head
+    title Add Movie 
+    include partials/header
+    style.
+      body { background-color: #23272A; color: #ffffff; }
+      a { color: lightblue; }
+      a:hover { color: purple; }
+      input { background-color: #23272A; padding: 10px; border-color: silver; width: 220px; }
+      input:focus { background-color: #000000; color: white; outline: none; border-color: silver; }
+      button { top: 60%; left: 40%; border-color: silver; background-color: #23272A; color: white; margin: 5px; padding: 10px; }
+      button:hover { border-color: purple; color: white; }
+      h1 { text-align: center; }
+
+  body
+      header
+          h1 Movie Database API
+      hr
+      form(action="/MDAPI/movies" method="POST")
+          h2 Add A Movie 
+          hr
+          input(type="text" name="Title" placeholder="Movie title" required)
+          br
+          input(type="text" name="Released" placeholder="Release year" required)
+          br
+          input(type="text" name="Runtime" placeholder="Runtime in minutes" required)
+          br
+          input(type="text" name="Genre" placeholder="Genre" required)
+          br
+          input(type="text" name="Plot" placeholder="Plot" required)
+          br
+          input(type="text" name="Actors" placeholder="Actor"  required)
+          br
+          input(type="text" name="Writer" placeholder="Writer"  required)
+          br
+          input(type="text" name="Director" placeholder="Director" required)
+          br
+          br
+          button(type="submit") Submit
+ 

@@ -1,0 +1,35 @@
+html
+  head
+      title Search Results 
+      include partials/header
+      style.
+        body { background-color: #23272A; color: #ffffff; }
+        a { color: lightblue; }
+        a:hover { color: purple; }
+        button { background-color: #23272A; color: white; }
+        button:hover { border-color: purple; color: white; }
+        h1 { text-align: center; }
+
+  body
+      header
+          h1 Movie Database API 
+      hr
+
+      form(method="GET" action=`/MDAPI/followPerson/${actorName}`)
+        button(type="submit") Follow 
+        br
+    
+      h3 Movies as Actor by #{actorName}:
+      each n in mvsAc
+        a(href=`/MDAPI/movies/${n.Title}`) #{n.Title}
+        br
+      br
+      h3 Movies as Director by #{directorName}:
+      each n in mvsDi
+        a(href=`/MDAPI/movies/${n.Title}`) #{n.Title}
+        br
+      br
+      h3 Movies as Writer by #{writerName}:
+      each n in mvsWr
+        a(href=`/MDAPI/movies/${n.Title}`) #{n.Title}
+        br
